@@ -9,10 +9,70 @@ class AppLightTheme {
   static ThemeData lightTheme = ThemeData(
     dialogTheme: AppDialogLightTheme.dialogTheme,
     bottomSheetTheme: AppModalBottomSheetLightTheme.bottomSheetThemeData,
-    textTheme: const TextTheme(
-        bodyText2: TextStyle(
-      fontSize: 14,
+    iconTheme: const IconThemeData(
       color: AppLightModeColors.blackColor,
-    )),
+    ),
+    textTheme: const TextTheme(
+      displayLarge: TextStyle(
+        fontSize: 14,
+        color: AppLightModeColors.blackColor,
+      ),
+      displayMedium: TextStyle(
+        fontSize: 14,
+        color: AppLightModeColors.blackColor,
+      ),
+      displaySmall: TextStyle(
+        fontSize: 14,
+        color: AppLightModeColors.blackColor,
+      ),
+      headlineLarge: TextStyle(
+        fontSize: 14,
+        color: AppLightModeColors.blackColor,
+      ),
+      headlineMedium: TextStyle(
+        fontSize: 14,
+        color: AppLightModeColors.blackColor,
+      ),
+      headlineSmall: TextStyle(
+        fontSize: 14,
+        color: AppLightModeColors.blackColor,
+      ),
+      titleLarge: TextStyle(
+        fontSize: 14,
+        color: AppLightModeColors.blackColor,
+      ),
+      titleMedium: TextStyle(
+        fontSize: 14,
+        color: AppLightModeColors.blackColor,
+      ),
+      titleSmall: TextStyle(
+        fontSize: 14,
+        color: AppLightModeColors.blackColor,
+      ),
+      bodyLarge: TextStyle(
+        fontSize: 18,
+        color: AppLightModeColors.blackColor,
+      ),
+      bodyMedium: TextStyle(
+        fontSize: 14,
+        color: AppLightModeColors.blackColor,
+      ),
+      bodySmall: TextStyle(
+        fontSize: 14,
+        color: AppLightModeColors.blackColor,
+      ),
+      labelLarge: TextStyle(
+        fontSize: 14,
+        color: AppLightModeColors.blackColor,
+      ),
+      labelMedium: TextStyle(
+        fontSize: 14,
+        color: AppLightModeColors.blackColor,
+      ),
+      labelSmall: TextStyle(
+        fontSize: 14,
+        color: AppLightModeColors.blackColor,
+      ),
+    ),
   );
 }
