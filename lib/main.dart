@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 import 'app/config/themes/dark_theme/app_dark_theme.dart';
 import 'app/config/themes/light_theme/app_light_theme.dart';
 import 'app/pages/home_page.dart';
+import 'injection_container.dart' as di;
 
-void main() {
+void main() async {
+  await di.init();
+
   runApp(const MyApp());
 }
 
