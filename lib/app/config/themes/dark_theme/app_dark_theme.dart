@@ -10,7 +10,7 @@ class AppDarkTheme {
     dialogTheme: AppDialogDarkTheme.dialogTheme,
     bottomSheetTheme: AppModalBottomSheetDarkTheme.bottomSheetThemeData,
     textTheme: const TextTheme(
-        bodyText1: TextStyle(
+        bodyText2: TextStyle(
       fontSize: 14,
       color: AppDarkModeColors.whiteColor,
     )),
