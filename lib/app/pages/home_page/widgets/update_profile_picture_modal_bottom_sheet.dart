@@ -1,8 +1,7 @@
 import 'package:change_profile_avatar/app/data/services/media_service.dart';
+import 'package:change_profile_avatar/app/pages/home_page/bloc/home_page_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-
-import '../../../../injection_container.dart';
 
 class UpdateProfilePictureModalBottomSheet extends StatelessWidget {
   const UpdateProfilePictureModalBottomSheet({super.key});
@@ -10,6 +9,7 @@ class UpdateProfilePictureModalBottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final MediaService mediaService = GetIt.I<MediaService>();
+    final HomePageBloc homePageBloc = GetIt.I<HomePageBloc>();
     return FittedBox(
       fit: BoxFit.fill,
       child: Container(
@@ -49,7 +49,11 @@ class UpdateProfilePictureModalBottomSheet extends StatelessWidget {
                 ),
 
                 GestureDetector(
-                  onTap: () => mediaService.uploadImage(context: context, appImageSource: AppImageSource.camera),
+                  onTap: () => mediaService.uploadImage(context: context, appImageSource: AppImageSource.camera).then(
+                        (value) => homePageBloc.add(
+                          ProfilaAvatarChanged(profileImage: value),
+                        ),
+                      ),
                   child: ListTile(
                     leading: Icon(
                       Icons.camera_alt_outlined,
@@ -63,7 +67,11 @@ class UpdateProfilePictureModalBottomSheet extends StatelessWidget {
                   ),
                 ),
                 GestureDetector(
-                  onTap: () => mediaService.uploadImage(context: context, appImageSource: AppImageSource.gallery),
+                  onTap: () => mediaService.uploadImage(context: context, appImageSource: AppImageSource.gallery).then(
+                        (value) => homePageBloc.add(
+                          ProfilaAvatarChanged(profileImage: value),
+                        ),
+                      ),
                   child: ListTile(
                     leading: Icon(
                       Icons.upload,
