@@ -1,10 +1,15 @@
+import 'package:change_profile_avatar/app/data/services/media_service.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+
+import '../../../../injection_container.dart';
 
 class UpdateProfilePictureModalBottomSheet extends StatelessWidget {
   const UpdateProfilePictureModalBottomSheet({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final MediaService mediaService = GetIt.I<MediaService>();
     return FittedBox(
       fit: BoxFit.fill,
       child: Container(
@@ -44,7 +49,7 @@ class UpdateProfilePictureModalBottomSheet extends StatelessWidget {
                 ),
 
                 GestureDetector(
-                  onTap: null,
+                  onTap: () => mediaService.uploadImage(context: context, appImageSource: AppImageSource.camera),
                   child: ListTile(
                     leading: Icon(
                       Icons.camera_alt_outlined,
@@ -58,7 +63,7 @@ class UpdateProfilePictureModalBottomSheet extends StatelessWidget {
                   ),
                 ),
                 GestureDetector(
-                  onTap: null,
+                  onTap: () => mediaService.uploadImage(context: context, appImageSource: AppImageSource.gallery),
                   child: ListTile(
                     leading: Icon(
                       Icons.upload,
