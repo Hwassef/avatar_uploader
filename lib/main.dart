@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'app/config/themes/dark_theme/app_dark_theme.dart';
 import 'app/config/themes/light_theme/app_light_theme.dart';
+import 'app/pages/home_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       darkTheme: AppDarkTheme.darkTheme,
       theme: AppLightTheme.lightTheme,
       title: 'Flutter Demo',
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const HomePage(),
     );
   }
 }
