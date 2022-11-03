@@ -42,3 +42,39 @@ Future<void> showOpenSettingsAlertDialog({required BuildContext context}) {
         );
       });
 }
+
+Future<bool> onBackPressed(BuildContext context) async {
+  final shouldPop = await showDialog<bool>(
+    context: context,
+    builder: (context) {
+      return AlertDialog(
+        title: const Text('Are you you want to exist the app'),
+        actions: [
+          SizedBox(
+            width: MediaQuery.of(context).size.width,
+            child: Row(
+              children: [
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: () => Navigator.pop(context, true),
+                    child: const Text('Yes'),
+                  ),
+                ),
+                const SizedBox(
+                  width: 18,
+                ),
+                Expanded(
+                  child: OutlinedButton(
+                    onPressed: () => Navigator.pop(context),
+                    child: const Text("No"),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      );
+    },
+  );
+  return shouldPop!;
+}
