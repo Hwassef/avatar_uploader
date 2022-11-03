@@ -31,23 +31,6 @@ class UpdateProfilePictureModalBottomSheet extends StatelessWidget {
                   "Change profile photo",
                   style: Theme.of(context).textTheme.bodyLarge,
                 ),
-
-                /// show current photo
-                GestureDetector(
-                  onTap: null,
-                  child: ListTile(
-                    leading: Icon(
-                      Icons.remove_red_eye_outlined,
-                      color: Theme.of(context).iconTheme.color,
-                    ),
-                    contentPadding: EdgeInsets.zero,
-                    horizontalTitleGap: 0,
-                    title: const Text(
-                      "View current photo",
-                    ),
-                  ),
-                ),
-
                 GestureDetector(
                   onTap: () => mediaService.uploadImage(context: context, appImageSource: AppImageSource.camera).then(
                         (value) => homePageBloc.add(
