@@ -2,7 +2,6 @@ import 'package:change_profile_avatar/app/pages/home_page/widgets/update_profile
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get_it/get_it.dart';
 
 import '../../utils/principal_functions.dart';
 import 'bloc/home_page_bloc.dart';
@@ -28,7 +27,8 @@ class HomePage extends StatelessWidget {
                       backgroundImage: state.profileImage != null
                           ? Image.file(state.profileImage!).image
                           : const NetworkImage(
-                              'https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png'),
+                              'https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png',
+                            ),
                       child: Stack(
                         children: [
                           GestureDetector(
