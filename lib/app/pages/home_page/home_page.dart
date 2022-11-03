@@ -12,7 +12,6 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final HomePageBloc homePageBloc = GetIt.I<HomePageBloc>();
     return WillPopScope(
       onWillPop: () => onBackPressed(context),
       child: Scaffold(
