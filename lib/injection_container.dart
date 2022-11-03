@@ -14,7 +14,7 @@ Future<void> init() async {
   sl.registerSingleton<MediaService>(
     MediaServiceImplementation(),
   );
-  sl.registerSingleton<HomePageBloc>(
-    HomePageBloc(),
+  sl.registerLazySingleton(
+    () => HomePageBloc(),
   );
 }
