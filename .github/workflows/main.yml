@@ -46,37 +46,72 @@
 #           tag: v1.0.${{ github.run_number }}
 #           token: ${{ secrets.KEY }}
 
-name: Android CI
+# name: Android CI
 
-on:
-  push:
+# on:
+#   push:
+#     branches: [ "main" ]
+#   pull_request:
+#     branches: [ "main" ]
+
+# jobs:
+#   build:
+
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - uses: actions/checkout@v3
+#       - name: set up JDK 17
+#         uses: actions/setup-java@v3
+#         with:
+#           java-version: '17'
+#           distribution: 'temurin'
+#           cache: gradle
+
+#       - name: Grant execute permission for gradlew
+#         run: chmod +x gradlew
+#       - name: build release
+#         run: ./gradlew assembleDebug
+#       - name: upload artifact to Firebase App Distribution
+#         uses: wzieba/Firebase-Distribution-Github-Action@v1.5.1
+#         with:
+#           appId: ${{secrets.FIREBASE_APP_ID}}
+#           #token: ${{secrets.FIREBASE_TOKEN}}   
+#           serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}      
+#           groups: testers
+#           file: app/build/outputs/apk/debug/app-debug.apk
+name: Flutter
+
+on:  #events (push and pull_request)
+  push: 
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 
-jobs:
-  build:
 
-    runs-on: ubuntu-latest
+jobs:   #here we specify the jobs - We could have multiple jobs
+  build:  #name it something meaningful 
+    runs-on: ubuntu-latest   #runner: select a machine to use
 
     steps:
-      - uses: actions/checkout@v3
-      - name: set up JDK 17
+      - uses: actions/checkout@v2
+      - name: set up JDK 11
         uses: actions/setup-java@v3
         with:
-          java-version: '17'
           distribution: 'temurin'
-          cache: gradle
+          java-version: '17'
+      - uses: subosito/flutter-action@v1
+        with:
+          channel: 'stable'
 
-      - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
-      - name: build release
-        run: ./gradlew assembleDebug
-      - name: upload artifact to Firebase App Distribution
-        uses: wzieba/Firebase-Distribution-Github-Action@v1.5.1
+      - name: Build Gradle
+        run: flutter build apk --debug
+      - run: ls build/app/outputs/flutter-apk
+      # - run: ls build/app/outputs/bundle/release
+      - name: Upload artifact to Firebase App Distribution
+        uses: wzieba/Firebase-Distribution-Github-Action@v1
         with:
           appId: ${{secrets.FIREBASE_APP_ID}}
-          #token: ${{secrets.FIREBASE_TOKEN}}   
-          serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}      
-          groups: testers
-          file: app/build/outputs/apk/debug/app-debug.apk
+          serviceCredentialsFileContent: ${{secrets.CREDENTIAL_FILE_CONTENT}}
+          groups: internal-testers
+          file: build/app/outputs/flutter-apk/app-debug.apk  
