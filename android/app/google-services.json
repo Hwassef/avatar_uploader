@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "7506565531",
+    "project_id": "inappcropper",
+    "storage_bucket": "inappcropper.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:7506565531:android:79da278b1dd7b2718d293e",
+        "android_client_info": {
+          "package_name": "com.example.change_profile_avatar"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAY_5wh6529YCmHWQsVRehb0Fat_mbuzqY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
